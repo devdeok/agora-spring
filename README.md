@@ -12,7 +12,7 @@ Agora 프로젝트는 위치를 기반으로 하여 스터디를 찾고 스터�
 * 기능에 알맞는 API나 기술을 사용
 
 # Tech Stack
-![캡처](https://user-images.githubusercontent.com/78465913/136657810-3474346a-30ab-41ac-80db-de32f44c076b.PNG)
+![캡처](https://user-images.githubusercontent.com/78465913/137769263-a2bf1b6c-4f21-4811-8c54-9cb99c628a15.PNG)
 
 # DB
 
