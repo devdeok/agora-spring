@@ -1,6 +1,5 @@
 package com.demos.agora.user;
 
-<<<<<<< HEAD
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,6 +9,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     @EntityGraph(attributePaths = {"boards"})
     List<User> findAll();
+
     // fineBy[컬럼이름] : 컬럼이름에 일치하는 사용자 데이터를 가져옴
     /* db table을 보면 username는 unique 제약조건이 걸려있으므로 하나의 데이터나
        없는 null값이 들어감 */
@@ -24,3 +24,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // NativeQuery로 할 경우에는 순수 sql query가 호출됨
     @Query(value = "select u from User u where u.username like %?1%", nativeQuery = true)
     List<User> findByUsernameNativeQuery(String username);
+}
