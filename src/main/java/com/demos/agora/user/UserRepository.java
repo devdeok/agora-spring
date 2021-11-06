@@ -1,5 +1,6 @@
 package com.demos.agora.user;
 
+<<<<<<< HEAD
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,3 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // NativeQuery로 할 경우에는 순수 sql query가 호출됨
     @Query(value = "select u from User u where u.username like %?1%", nativeQuery = true)
     List<User> findByUsernameNativeQuery(String username);
-}
