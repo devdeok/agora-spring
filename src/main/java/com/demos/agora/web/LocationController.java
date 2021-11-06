@@ -1,7 +1,7 @@
 package com.demos.agora.web;
 
 import com.demos.agora.service.LocationService;
-import com.demos.agora.web.dto.CMResDto;
+import com.demos.agora.web.dto.CMRespDto;
 import com.demos.agora.web.dto.location.LocationReqDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +15,17 @@ public class LocationController {
     private final LocationService locationService;
 
     @PostMapping("/location")
-    public CMResDto<?> 근처주소검색(@RequestBody LocationReqDto locationReqDto) {
-        return new CMResDto<>(1, locationService.근처주소검색(locationReqDto.getLongitude(), locationReqDto.getLatitude()));
+    public CMRespDto<?> 근처주소검색(@RequestBody LocationReqDto locationReqDto) {
+        System.out.println("근접주소검색");
+        System.out.println(locationReqDto.getLongitude());
+        System.out.println(locationReqDto.getLatitude());
+        return new CMRespDto<>(1, locationService.근처주소검색(locationReqDto.getLongitude(), locationReqDto.getLatitude()));
     }
 
     @GetMapping("/location")
-    public CMResDto<?> 주소검색(String address) {
-        return new CMResDto<>(1, locationService.주소검색(address));
+    public CMRespDto<?> 주소검색(String address) {
+        System.out.println("주소검색");
+        return new CMRespDto<>(1, locationService.주소검색(address));
     }
 
     /*

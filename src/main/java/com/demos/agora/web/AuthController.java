@@ -1,11 +1,5 @@
 package com.demos.agora.web;
 
-import com.demos.agora.service.AuthService;
-import com.demos.agora.web.dto.CMResDto;
-import com.demos.agora.web.dto.auth.AuthSaveReqDto;
-import com.demos.agora.web.dto.auth.AuthUpdateReqDto;
-import org.springframework.web.bind.annotation.*;
-
 public class AuthController {
 //    private final AuthService authService;
 

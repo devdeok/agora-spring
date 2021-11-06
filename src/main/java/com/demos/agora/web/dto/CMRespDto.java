@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CMResDto<T> {
+public class CMRespDto<T> {
     private int code;
     private T data;
 }
