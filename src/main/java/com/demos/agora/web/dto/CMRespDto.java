@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CMRespDto<T> {
+    // CMRespDto는 공통 응답 DTO를 의미한다.(common respense dto)
     private int code;
     private T data;
 }

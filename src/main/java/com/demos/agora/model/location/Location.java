@@ -1,4 +1,4 @@
-package com.demos.agora.location;
+package com.demos.agora.model.location;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,7 +30,7 @@ public class Location {
     private int buildbb;        // 10. 건물본번
     private int buildboob;      // 11. 건문부번
     private String buildname;   // 12. 건물명
-    private String paxnum;         // 13. 우편번호
+    private String paxnum;      // 13. 우편번호
     private String buildboonryu;// 14. 건물용도분류
     private String buildyb;     // 15. 건물군여부
 

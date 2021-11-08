@@ -1,6 +1,6 @@
 package com.demos.agora.web.dto.user;
 
-import com.demos.agora.user.User;
+import com.demos.agora.model.user.User;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,12 +23,12 @@ public class UserDto {
         this.interest = interest;
     }
 
-    public User toEntity(){
-        return User.builder()
-                .association(association)
-                .age(age)
-                .sex(sex)
-                .interest(interest)
-                .build();
-    }
+//    public User toEntity(){
+//        return User.builder()
+//                .association(association)
+//                .age(age)
+//                .sex(sex)
+//                .interest(interest)
+//                .build();
+//    }
 }

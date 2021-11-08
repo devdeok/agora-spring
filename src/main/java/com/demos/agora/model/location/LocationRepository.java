@@ -1,4 +1,4 @@
-package com.demos.agora.location;
+package com.demos.agora.model.location;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

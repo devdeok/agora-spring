@@ -1,6 +1,6 @@
 package com.demos.agora.web.dto.auth;
 
-import com.demos.agora.auth.Auth;
+import com.demos.agora.model.auth.Auth;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package com.demos.agora.auth;
+package com.demos.agora.model.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

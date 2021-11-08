@@ -1,7 +1,7 @@
 package com.demos.agora.service;
 
-import com.demos.agora.location.Location;
-import com.demos.agora.location.LocationRepository;
+import com.demos.agora.model.location.Location;
+import com.demos.agora.model.location.LocationRepository;
 import com.jhlabs.map.proj.Projection;
 import com.jhlabs.map.proj.ProjectionFactory;
 import lombok.RequiredArgsConstructor;
