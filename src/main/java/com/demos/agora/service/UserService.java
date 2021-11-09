@@ -2,6 +2,7 @@ package com.demos.agora.service;
 
 import com.demos.agora.model.user.User;
 import com.demos.agora.model.user.UserRepository;
+import com.demos.agora.web.dto.user.UserRegistryReqDto;
 import com.demos.agora.web.dto.user.UserSaveReqDto;
 import com.demos.agora.web.dto.user.UserUpdateReqDto;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class UserService {
 
@@ -42,14 +42,12 @@ public class UserService {
         // 영속화
         User userEntity = userRepository.findById(id).get();
         userEntity.setNickName(userUpdateReqdto.getNickName());
-        userEntity.setPhoto(userUpdateReqdto.getPhoto());
         return userEntity;
     }
 
-//    @Transactional
-//    public Long registUser(UserDto form) {
-//        User user = form.toEntity();
-//        userRepository.save(user);
-//        return user.getId();
-//    }
+    @Transactional
+    public User 유저정보(UserRegistryReqDto userRegistryReqDto) {
+        int userId = userRepository.findByPhoneNumber("0104015002").getId();
+        return userRepository.m유저정보저장(userRegistryReqDto.toEntity(), userId);
+    }
 }

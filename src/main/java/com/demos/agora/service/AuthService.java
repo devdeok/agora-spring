@@ -30,7 +30,6 @@ public class AuthService {
 
     @Transactional
     public Auth 인증코드수정(int id, AuthUpdateReqDto authUpdateReqDto) {
-
         // 영속화
         Auth authEntity = authRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("id를 찾을 수 없습니다.");
