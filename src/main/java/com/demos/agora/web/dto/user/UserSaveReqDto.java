@@ -1,3 +1,4 @@
+
 package com.demos.agora.web.dto.user;
 
 import com.demos.agora.model.user.User;
@@ -21,3 +22,4 @@ public class UserSaveReqDto {
                 nickName(nickName).build();
     }
 }
+

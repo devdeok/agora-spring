@@ -1,3 +1,4 @@
+
 package com.demos.agora.web.dto.auth;
 
 import com.demos.agora.model.auth.Auth;
@@ -15,3 +16,4 @@ public class AuthSaveReqDto {
                 .build();
     }
 }
+
