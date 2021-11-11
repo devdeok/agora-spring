@@ -1,3 +1,4 @@
+
 package com.demos.agora.model.user;
 
 import com.demos.agora.web.dto.user.UserRegistryReqDto;

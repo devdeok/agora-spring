@@ -1,3 +1,4 @@
+
 package com.demos.agora.web;
 
 import com.demos.agora.service.LocationService;
@@ -26,9 +27,12 @@ public class LocationController {
         return new CMRespDto<>(1, locationService.주소검색(address));
     }
 
+
     /*
      * @GetMapping("/location") public CMRespDto<?> 근처주소검색(double longitude, double
      * latitude) { return new CMRespDto(1, locationService.근처주소검색(longitude,
      * latitude)); }
      */
+
 }
+

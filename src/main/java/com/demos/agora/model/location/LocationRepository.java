@@ -1,3 +1,4 @@
+
 package com.demos.agora.model.location;
 
 import org.springframework.data.jpa.repository.JpaRepository;

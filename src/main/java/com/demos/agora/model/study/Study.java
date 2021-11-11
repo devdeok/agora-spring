@@ -1,25 +1,42 @@
 package com.demos.agora.model.study;
 
-import com.demos.agora.model.user.User;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
-@Entity
+
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
 public class Study {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String interest;
+
     private String title;
 
-    @ManyToOne // study가 many
-    @JoinColumn(name = "userId") // 컬럼명 적기
-    private User user;
+    private Date date; // 만든시간
+
+    private int limit;
+
+//    private double  latitude;
+//    private double longitude;
+
+  //  private double distance;
+
+  //  private int member;//멤버 수
+
+  //  @ManyToOne // study가 many
+  //  @JoinColumn(name = "userId") // 컬럼명 적기
+  //  private User user;
 
 
 }
