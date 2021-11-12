@@ -1,3 +1,4 @@
+
 package com.demos.agora.model.user;
 
 import com.demos.agora.model.study.Study;
@@ -46,5 +47,6 @@ public class User {
     @JsonIgnoreProperties({"user"})
     @ToString.Exclude
     private List<Study> study;
-    
+
 }
+
