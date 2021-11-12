@@ -12,7 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
+    // @Modifying : insert, update, delete과 DDL구문 사용시 표기
+    // @Transactional : update, delete 사용 시 표기
     private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
@@ -46,8 +47,15 @@ public class UserService {
     }
 
     @Transactional
-    public User 유저정보(UserRegistryReqDto userRegistryReqDto) {
-        int userId = userRepository.findByPhoneNumber("0104015002").getId();
-        return userRepository.m유저정보저장(userRegistryReqDto.toEntity(), userId);
+    public int 유저정보(UserRegistryReqDto userRegistryReqDto) {
+//        User user = userRepository.m유저확인("0104015002");
+
+        String phoneNumber = userRegistryReqDto.getPhoneNumber();
+        String association = userRegistryReqDto.toEntity().getAssociation();
+        String age = userRegistryReqDto.toEntity().getAge();
+        String sex = userRegistryReqDto.toEntity().getSex();
+        String interest = userRegistryReqDto.toEntity().getInterest();
+
+        return userRepository.m유저정보저장(association,age,sex,interest,phoneNumber); // error
     }
 }
