@@ -49,8 +49,6 @@ public class UserService {
 
     @Transactional
     public int 유저정보(UserRegistryReqDto userRegistryReqDto) {
-//        User user = userRepository.m유저확인("0104015002");
-
         String phoneNumber = userRegistryReqDto.getPhoneNumber();
         String association = userRegistryReqDto.toEntity().getAssociation();
         String age = userRegistryReqDto.toEntity().getAge();

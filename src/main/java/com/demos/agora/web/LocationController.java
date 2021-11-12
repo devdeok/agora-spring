@@ -19,6 +19,7 @@ public class LocationController {
 
     @PostMapping("/location")
     public CMRespDto<?> 근처주소검색(@RequestBody LocationReqDto locationReqDto) {
+        // WGS-84의 위도 경도 값이 넘어옴
         return new CMRespDto<>(1, locationService.근처주소검색(locationReqDto.getLongitude(), locationReqDto.getLatitude()));
     }
 

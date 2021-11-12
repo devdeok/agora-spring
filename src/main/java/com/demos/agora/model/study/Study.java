@@ -1,13 +1,8 @@
 package com.demos.agora.model.study;
 
-
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import java.util.Date;
-
-
 
 @Builder
 @AllArgsConstructor
@@ -17,7 +12,7 @@ import java.util.Date;
 public class Study {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String interest;
 
