@@ -1,6 +1,7 @@
 
 package com.demos.agora.model.user;
 
+import com.demos.agora.web.dto.location.LocationReqDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,5 +28,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
                     @Param("phoneNumber") String phoneNumber,
                     @Param("latitude") Double latitude,
                     @Param("longitude") Double longitude);
+
 }
 

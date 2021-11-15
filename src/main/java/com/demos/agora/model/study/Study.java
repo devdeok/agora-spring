@@ -22,10 +22,43 @@ public class Study {
 
     private int limit;
 
-//    private double  latitude;
-//    private double longitude;
+    private double mood;//스터디 분위기
 
-  //  private double distance;
+    private double  entX;
+    private double entY;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getInterest() {
+        return interest;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public double getMood() {
+        return mood;
+    }
+
+    public double getEntX() {
+        return entX;
+    }
+
+    public double getEntY() {
+        return entY;
+    }
+//  private double distance;
 
   //  private int member;//멤버 수
 
