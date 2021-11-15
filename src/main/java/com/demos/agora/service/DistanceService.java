@@ -3,7 +3,7 @@ package com.demos.agora.service;
 
 public class DistanceService {
     // 사용되는 위도와 경도는 WGS84 type
-    private static double distance(double lat1, double long1, double lat2, double long2){
+    public static double distance(double lat1, double long1, double lat2, double long2){
         double theta = long1 - long2;
         double dist = Math.sin(deg2rad(lat1))*Math.sin(deg2rad(lat2)) +
                 Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));

@@ -1,6 +1,7 @@
 
 package com.demos.agora.model.user;
 
+import com.demos.agora.web.dto.location.LocationReqDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,5 +24,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
                      @Param("age") String age,
                      @Param("interest") String interest,
                      @Param("phoneNumber") String phoneNumber);
+
+
+    @Query(value = "SELECT * FROM user WHERE phoneNumber=?1",nativeQuery = true)
+    User m유저설정위치(String phoneNumber);
 }
 

@@ -27,6 +27,8 @@ public class User {
     private String sex;         //성별
     private String interest;    //관심분야
     private String phoneNumber; //핸드폰번호
+    private double latitude;
+    private double longitude;
 
     @CreationTimestamp
     private Timestamp createDate;
@@ -39,7 +41,15 @@ public class User {
         this.interest = interest;
     }
 
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // cacade : study 삭제시 이미지 다날라감.
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    //    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // cacade : study 삭제시 이미지 다날라감.
 //    @JsonIgnoreProperties({"user"})
 //    @ToString.Exclude
 //    private List<Study> study;
