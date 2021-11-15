@@ -3,7 +3,6 @@ package com.demos.agora.web.dto.user;
 
 import com.demos.agora.model.user.User;
 
-import com.demos.agora.web.dto.location.LocationReqDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
