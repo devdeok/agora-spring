@@ -1,6 +1,5 @@
 package com.demos.agora.web;
 
-import com.demos.agora.model.study.Study;
 import com.demos.agora.service.StudyService;
 import com.demos.agora.web.dto.CMRespDto;
 import lombok.RequiredArgsConstructor;
@@ -9,14 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 public class StudyController {
     private final StudyService studyService;
 
+<<<<<<< HEAD
    /* @GetMapping("/study") //요청하는 사용자가 누구인지 서버가 어떻게 알지...?
+=======
+    @GetMapping("/study")
+>>>>>>> 740ec635e32c5b93168209f85a4383193607d2c8
     public CMRespDto<?> 전체스터디목록() {
         return new CMRespDto<>(1, studyService.전체스터디목록());
     }*/

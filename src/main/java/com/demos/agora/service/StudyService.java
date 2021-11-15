@@ -20,6 +20,7 @@ import java.util.List;
 public class StudyService {
 
     private final StudyRepository studyRepository;
+<<<<<<< HEAD
     private final UserRepository userRepository;
 
    // @Transactional(readOnly = true)
@@ -49,6 +50,16 @@ public class StudyService {
                 return studyRepository.필터링거리순정렬(interest);
         }
     }
+=======
+    private final DistanceCalc distanceCalc = new DistanceCalc();
+    
+    // 사용자와 스터디간의 거리 차이도 표시해주어야함
+    @Transactional(readOnly = true)
+    public List<Study> 전체스터디목록() {
+        
+
+        return studyRepository.전체스터디목록();}
+>>>>>>> 740ec635e32c5b93168209f85a4383193607d2c8
 
     @Transactional(readOnly = true)
     public  List<StudyListDto> 가까운스터디목록(String phoneNumber, String interest, String order){

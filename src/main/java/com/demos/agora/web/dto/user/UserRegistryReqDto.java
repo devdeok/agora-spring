@@ -3,6 +3,7 @@ package com.demos.agora.web.dto.user;
 
 import com.demos.agora.model.user.User;
 
+import com.demos.agora.web.dto.location.LocationReqDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,16 +16,21 @@ import lombok.NoArgsConstructor;
 public class UserRegistryReqDto {
     private String phoneNumber;
     private String association;
-    private String sex;
     private String age;
+    private String sex;
     private String interest;
+//    private LocationReqDto locationReqDto;
+    private Double latitude;
+    private Double longitude;
 
+    // 객체로 만드는 메서드
     public User toEntity() {
         return User.builder().
                 phoneNumber(phoneNumber).
                 association(association).
-                sex(sex).
                 age(age).
-                interest(interest).build();
+                sex(sex).
+                interest(interest).
+                build();
     }
 }

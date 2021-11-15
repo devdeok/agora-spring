@@ -41,6 +41,7 @@ public class UserController {
     // @PutMapping : update 작업 수행 시 사용
     @PutMapping("/user/registry")
     public CMRespDto<?> 유저정보(@RequestBody UserRegistryReqDto userRegistryReqDto){
+        // 사용자의 핸드폰번호,
         return new CMRespDto<>(1, userService.유저정보(userRegistryReqDto)); // error
     }
 
