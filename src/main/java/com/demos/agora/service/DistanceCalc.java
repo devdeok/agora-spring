@@ -1,7 +1,7 @@
 
 package com.demos.agora.service;
 
-public class DistanceService {
+public class DistanceCalc {
     // 사용되는 위도와 경도는 WGS84 type
     private static double distance(double lat1, double long1, double lat2, double long2){
         double theta = long1 - long2;

@@ -13,9 +13,14 @@ import java.util.List;
 public class StudyService {
 
     private final StudyRepository studyRepository;
-
+    private final DistanceCalc distanceCalc = new DistanceCalc();
+    
+    // 사용자와 스터디간의 거리 차이도 표시해주어야함
     @Transactional(readOnly = true)
-    public List<Study> 전체스터디목록() {return studyRepository.전체스터디목록();}
+    public List<Study> 전체스터디목록() {
+        
+
+        return studyRepository.전체스터디목록();}
 
     @Transactional(readOnly = true)
     public List<Study> 스터디필터링(String interest, String lineup) {

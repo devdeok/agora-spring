@@ -22,7 +22,7 @@ public class LocationService {
 
     @Transactional(readOnly = true)
     public List<Location> 근처주소검색(double longitude, double latitude) {
-        Point2D.Double WG84 = new Point2D.Double(longitude, latitude);
+        Point2D.Double WG84 = new Point2D.Double(longitude, latitude); // WGS84좌표계 -> UTK-K좌표계 변환
         Point2D.Double UTMK = proj.transform(WG84, new Point2D.Double());
 
         return locationRepository.근처주소검색(UTMK.getX(), UTMK.getY());

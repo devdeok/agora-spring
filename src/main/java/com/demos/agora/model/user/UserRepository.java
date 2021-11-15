@@ -16,12 +16,16 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT * FROM user WHERE nickName=?1",nativeQuery = true)
     User m닉네임중복체크(String nickName);
     
-    @Modifying // update delete의 경우 붙여줘야됨
-    @Query(value = "UPDATE user SET association = :association, sex = :sex, age = :age, interest = :interest WHERE phoneNumber = :phoneNumber",nativeQuery = true)
+    @Modifying // update/delete의 경우 @Modifying 붙여줘야됨
+    @Query(value = "UPDATE user " +
+                   "SET association=:association, age=:age, sex=:sex, interest=:interest, latitude=:latitude, longitude=:longitude " +
+                   "WHERE phoneNumber = :phoneNumber",nativeQuery = true)
     int m유저정보저장(@Param("association") String assocication,
-                     @Param("sex") String sex,
-                     @Param("age") String age,
-                     @Param("interest") String interest,
-                     @Param("phoneNumber") String phoneNumber);
+                    @Param("age") String age,
+                    @Param("sex") String sex,
+                    @Param("interest") String interest,
+                    @Param("phoneNumber") String phoneNumber,
+                    @Param("latitude") Double latitude,
+                    @Param("longitude") Double longitude);
 }
 

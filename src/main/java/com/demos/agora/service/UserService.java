@@ -54,8 +54,10 @@ public class UserService {
         String age = userRegistryReqDto.toEntity().getAge();
         String sex = userRegistryReqDto.toEntity().getSex();
         String interest = userRegistryReqDto.toEntity().getInterest();
+        Double latitude = userRegistryReqDto.getLatitude();
+        Double longitude = userRegistryReqDto.getLongitude();
 
-        return userRepository.m유저정보저장(association,age,sex,interest,phoneNumber); // error
+        return userRepository.m유저정보저장(association,age,sex,interest,phoneNumber,latitude,longitude); // error? ㄴㄴ
     }
 }
 

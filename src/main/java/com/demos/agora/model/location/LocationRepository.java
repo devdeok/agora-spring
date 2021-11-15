@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface LocationRepository extends JpaRepository<Location,String> {
-
+    // UTM-K X:1000KM, Y:2000KM
     @Query(value = "SELECT * " +
                     "FROM Location " +
                     "WHERE entX>=?1-1800 " +
-                            "AND entX<=?1+2000 " +
+                            "AND entX<=?1+1800 " +
                             "AND entY>=?2-1800 " +
                             "AND entY<=?2+1800 " +
                     "order by entX  ASC", nativeQuery = true)
