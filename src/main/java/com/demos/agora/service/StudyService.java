@@ -2,8 +2,12 @@ package com.demos.agora.service;
 
 import com.demos.agora.model.study.Study;
 import com.demos.agora.model.study.StudyRepository;
-import com.demos.agora.web.dto.study.StudyListReqDto;
+import com.demos.agora.web.dto.study.StudyCreateReqDto;
 import lombok.RequiredArgsConstructor;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.io.ParseException;
+import org.locationtech.jts.io.WKTReader;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,18 +19,25 @@ public class StudyService {
     private final StudyRepository studyRepository;
 
     @Transactional(readOnly = true)
-    public List<Study> 테스트목록(){
+    public List<Study> 스터디정렬(String phoneNumber, String interest, String lineup){
         return studyRepository.전체최신순정렬();
     }
 
+    @Modifying
     @Transactional(readOnly = true)
-    public List<Study> 스터디정렬(StudyListReqDto studyListReqDto){
-        return studyRepository.전체최신순정렬();
-    }
+    public List<Study> 스터디생성(StudyCreateReqDto studyCreateReqDto){
+        String title = studyCreateReqDto.getTitle();
+        String interest = studyCreateReqDto.getInterest();
+        int limit = studyCreateReqDto.getLimit();
+        int count = studyCreateReqDto.getCount();
 
-    @Transactional(readOnly = true)
-    public List<Study> 스터디생성(){
-        return studyRepository.스터디생성();
+        double longitude = studyCreateReqDto.getLongitude();
+        double latitude = studyCreateReqDto.getLatitude();
+
+        String description = studyCreateReqDto.getDescription();
+
+        return studyRepository.스터디생성(title,interest,limit,count,
+                                        longitude,latitude,description);
     }
 
     @Transactional(readOnly = true)
