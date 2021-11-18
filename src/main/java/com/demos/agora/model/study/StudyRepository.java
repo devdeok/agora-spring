@@ -43,5 +43,6 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
                         @Param("latitude") Double latitude,
                         @Param("description") String description);
 
-    List<Study> 스터디정보조회();
+
+    List<Study> 스터디정보조회(long studyId);
 }

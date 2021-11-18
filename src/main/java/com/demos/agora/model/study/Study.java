@@ -1,10 +1,13 @@
 package com.demos.agora.model.study;
 
+import com.demos.agora.model.join.Join;
+import com.demos.agora.model.user.User;
 import lombok.*;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -14,7 +17,7 @@ import java.sql.Date;
 public class Study {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String title;   // 스터디 제목
     private String interest;// 관심분야
@@ -27,11 +30,8 @@ public class Study {
     private double mood;    // 스터디 분위기
     private String description; // 스터디 설명
 
-  //  private int member;//멤버 수
-
-  //  @ManyToOne // study가 many
-  //  @JoinColumn(name = "userId") // 컬럼명 적기
-  //  private User user;
-
+    // join table에 있는 study와 mapping
+    @OneToMany(mappedBy = "study")
+    Set<Join> join;
 
 }

@@ -4,9 +4,6 @@ import com.demos.agora.model.study.Study;
 import com.demos.agora.model.study.StudyRepository;
 import com.demos.agora.web.dto.study.StudyCreateReqDto;
 import lombok.RequiredArgsConstructor;
-import org.locationtech.jts.geom.Point;
-import org.locationtech.jts.io.ParseException;
-import org.locationtech.jts.io.WKTReader;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,15 +14,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudyService {
     private final StudyRepository studyRepository;
-
+    
+    // 정렬 시 study와 user가 매핑된 table도 join해서 데이터를 response해주어야 함
     @Transactional(readOnly = true)
     public List<Study> 스터디정렬(String phoneNumber, String interest, String lineup){
         return studyRepository.전체최신순정렬();
     }
 
+    // 생성 시 study_user테이블에 study와 user의 id를 매핑시켜 주어야 하며 생성한 user에게 그룹장 권한을 부여해야 한다.
     @Modifying
     @Transactional(readOnly = true)
     public List<Study> 스터디생성(StudyCreateReqDto studyCreateReqDto){
+        // 스터디 생성 후에는 생성된 studyId, userId가 필요하며 userId에는 그룹장 권한을 주어야 한다.
         String title = studyCreateReqDto.getTitle();
         String interest = studyCreateReqDto.getInterest();
         int limit = studyCreateReqDto.getLimit();
@@ -40,9 +40,11 @@ public class StudyService {
                                         longitude,latitude,description);
     }
 
+
     @Transactional(readOnly = true)
-    public List<Study> 스터디정보조회(){
-        return studyRepository.스터디정보조회();
+    public List<Study> 스터디정보조회(long studyId){
+        // StudyList에서 response한
+        return studyRepository.스터디정보조회(studyId);
     }
 
 

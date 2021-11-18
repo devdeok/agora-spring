@@ -19,7 +19,7 @@ public class Auth {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String phoneNumber;
     private String authCode;// Clinet에서 받은 인증번호
 }
