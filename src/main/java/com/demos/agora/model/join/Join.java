@@ -2,6 +2,7 @@ package com.demos.agora.model.join;
 
 import com.demos.agora.model.study.Study;
 import com.demos.agora.model.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Join {
     private JoinKey id;
 
     // We marked the study and user fields with @MapsId
+
     @ManyToOne
     @MapsId("studyId")
     @JoinColumn(name="studyId")
@@ -31,5 +33,4 @@ public class Join {
 
     private int role;   // 1 : 그룹장, 0 : 그룹원
     private Date memberSince; // 해당 그룹원의 가입 날짜
-
 }

@@ -1,6 +1,7 @@
 package com.demos.agora.model.user;
 
 import com.demos.agora.model.join.Join;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -36,21 +37,9 @@ public class User {
     private Timestamp createDate;
 
     // join table에 있는 user에 mapping
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     Set<Join> join;
-
-    @Builder
-    public User(String association, String age, String sex, String interest) {
-        this.association = association;
-        this.age = age;
-        this.sex = sex;
-        this.interest = interest;
-    }
-
-    //    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // cacade : study 삭제시 이미지 다날라감.
-//    @JsonIgnoreProperties({"user"})
-//    @ToString.Exclude
-//    private List<Study> study;
 
 }
 

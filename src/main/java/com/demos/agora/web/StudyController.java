@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 public class StudyController {
     private final StudyService studyService;
 
-    @GetMapping("/study/list/")
-    public CMRespDto<?> 스터디목록( String phoneNumber, String interest, String lineup) {
-        return new CMRespDto<>(1, studyService.스터디정렬(phoneNumber, interest, lineup));
+    @GetMapping("/study/list")
+        public CMRespDto<?> 스터디목록(double latitude, double longitude, String interest, String lineup) {
+        return new CMRespDto<>(1, studyService.스터디목록(latitude, longitude, interest, lineup));
     }
 
     @PostMapping("/study/create")
@@ -24,29 +24,15 @@ public class StudyController {
         return new CMRespDto<>(1,  studyService.스터디생성(studyCreateReqDto));
     }
 
+
     @GetMapping("/study/detail/{studyId}")
-    public CMRespDto<?> 스터디정보조회(@PathVariable("studyId") Long studyId){
+    public CMRespDto<?> 스터디정보조회(@PathVariable("studyId") Long studyId) {
         // 사용자가 스터디에 가입되었는지 체크한 뒤 client에서 체크해줌
         // 가입되지 않은 사용자일 경우 이 controller로 오게 됨
         // study는 interest, title, limit, description, count을 intent를 통해 들고 있기
         // studyId로 불러올 데이터는 jointable에 매핑된 
         // user의 nickName, role, manner, association
-        return new CMRespDto<>(1, studyService.스터디정보조회(studyId));
+        return new CMRespDto<>(1,  studyService.스터디정보조회(studyId));
     }
 
-
-    /* @GetMapping("/study")
-        public CMRespDto<?> 전체스터디목록() {
-            return new CMRespDto<>(1, studyService.전체스터디목록());
-        }*/
-
-//    @GetMapping("/study/sortType")
-//    public CMRespDto<?> 스터디정렬(String sortType) {
-//        return new CMRespDto<>(1, studyService.스터디정렬(sortType));
-//    }
-
-   /* @GetMapping("/study/filter")
-    public CMRespDto<?> 스터디필터링(String interest, String lineup) {
-        return new CMRespDto<>(1, studyService.스터디필터링(interest,lineup));
-    }*/
 }

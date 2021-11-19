@@ -2,6 +2,7 @@ package com.demos.agora.model.study;
 
 import com.demos.agora.model.join.Join;
 import com.demos.agora.model.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.locationtech.jts.geom.Point;
 
@@ -29,8 +30,11 @@ public class Study {
     private Point location; // Point(longitude, latitude)
     private double mood;    // 스터디 분위기
     private String description; // 스터디 설명
+    private int current;
+    private double distance;//유저와의 거리
 
     // join table에 있는 study와 mapping
+    @JsonIgnore
     @OneToMany(mappedBy = "study")
     Set<Join> join;
 
