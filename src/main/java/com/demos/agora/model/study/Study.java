@@ -17,7 +17,7 @@ import java.util.Set;
 public class Study {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String title;   // 스터디 제목
     private String interest;// 관심분야

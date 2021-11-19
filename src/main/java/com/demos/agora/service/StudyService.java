@@ -3,6 +3,7 @@ package com.demos.agora.service;
 import com.demos.agora.model.study.Study;
 import com.demos.agora.model.study.StudyRepository;
 import com.demos.agora.web.dto.study.StudyCreateReqDto;
+import com.demos.agora.web.dto.study.StudyDetailRespDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
@@ -40,10 +41,8 @@ public class StudyService {
                                         longitude,latitude,description);
     }
 
-
     @Transactional(readOnly = true)
-    public List<Study> 스터디정보조회(long studyId){
-        // StudyList에서 response한
+    public List<StudyDetailRespDto> 스터디정보조회(Long studyId){
         return studyRepository.스터디정보조회(studyId);
     }
 

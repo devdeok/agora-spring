@@ -16,7 +16,7 @@ public class Join {
      * @Embedded to mark the primary key, which is an instance of the JoinKey class
      */
     @EmbeddedId
-    private long id;
+    private JoinKey id;
 
     // We marked the study and user fields with @MapsId
     @ManyToOne

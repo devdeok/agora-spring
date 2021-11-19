@@ -1,7 +1,6 @@
 package com.demos.agora.model.user;
 
 import com.demos.agora.model.join.Join;
-import com.demos.agora.model.study.Study;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,13 +15,13 @@ import java.util.Set;
 @NoArgsConstructor
 public class User {
 
-//    @Column(name = "user_id")
+    // @Column(name = "user_id")
     // SQL 에서 자동생성되도록 돕는 어노테이션
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(nullable =false ,length = 50,unique=true)  //  nullable : null 허용 x , length : 글자길이 , unique : 중복허용 x
+    @Column(nullable =false ,length = 50,unique=true) //  nullable : null 허용 x , length : 글자길이 , unique : 중복허용 x
     private String nickName;
 
     private String association; //소속
