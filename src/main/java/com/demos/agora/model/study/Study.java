@@ -29,6 +29,8 @@ public class Study {
     private Point location; // Point(longitude, latitude)
     private double mood;    // 스터디 분위기
     private String description; // 스터디 설명
+    private int current;
+    private double distance;//유저와의 거리
 
     // join table에 있는 study와 mapping
     @OneToMany(mappedBy = "study")

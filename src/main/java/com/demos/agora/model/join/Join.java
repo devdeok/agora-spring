@@ -5,26 +5,28 @@ import com.demos.agora.model.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 
+@IdClass(Join.class)
 @Data
 @Entity
-public class Join {
+public class Join implements Serializable {
     // Study와 User간의 relation을 나타내는 table
 
-    /*
-     * @Embedded to mark the primary key, which is an instance of the JoinKey class
-     */
-    @EmbeddedId
-    private long id;
+ /*  @EmbeddedId
+    private long id;*/
 
     // We marked the study and user fields with @MapsId
     @ManyToOne
+    @Id
     @MapsId("studyId")
     @JoinColumn(name="studyId")
     private Study study;
 
+
     @ManyToOne
+    @Id
     @MapsId("userId")
     @JoinColumn(name = "userId")
     private User user;

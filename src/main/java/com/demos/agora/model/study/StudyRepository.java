@@ -1,5 +1,6 @@
 package com.demos.agora.model.study;
 
+import com.demos.agora.web.dto.study.StudyListResDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,29 +9,59 @@ import java.util.List;
 
 public interface StudyRepository extends JpaRepository<Study, Long> {
 
-    @Query(value = "SELECT * FROM study ORDER BY createdate desc", nativeQuery = true)
-    List<Study> 전체최신순정렬();
+    @Query(value = "SELECT * FROM (SELECT id,title,interest,createDate,`limit`,COUNT(userId) AS `current`,ST_DISTANCE_SPHERE(POINT(?2, ?1), location) AS distance\n" +
+            "FROM testdb.study as s\n" +
+            "JOIN testdb.`join` as j\n" +
+            "ON s.id = j.studyId\n" +
+            "GROUP BY studyId\n" +
+            "HAVING `current` >= 1\n" +
+            "ORDER BY createDate desc) AS a WHERE a.distance<10000;", nativeQuery = true)
+    List<StudyListResDto> 전체최신순정렬(double latitude, double longitude);
 
-/*
-    @Query(value = "SELECT * FROM study", nativeQuery = true)
-    List<Study> 필터링된스터디목록(String interest, String order);
-*/
+    @Query(value = "SELECT * FROM (SELECT id,title,interest,createDate,`limit`,COUNT(userId) AS `current`,ST_DISTANCE_SPHERE(POINT(?2, ?1), location) AS distance\n" +
+            "FROM testdb.study as s\n" +
+            "JOIN testdb.`join` as j\n" +
+            "ON s.id = j.studyId\n" +
+            "GROUP BY studyId\n" +
+            "HAVING `current` >= 1\n" +
+            "ORDER BY mood desc) AS a WHERE a.distance<10000;", nativeQuery = true)
+    List<StudyListResDto> 전체추천순정렬(double latitude, double longitude);
 
-    @Query(value = "SELECT * FROM study ORDER BY mood desc", nativeQuery = true)
-    List<Study> 전체추천순정렬();
-    
-    // 현재는 모든 스터디 정렬
-    @Query(value = "SELECT * FROM study", nativeQuery = true)
-    List<Study> 전체거리순정렬();
+    @Query(value = "SELECT * FROM (SELECT id,title,interest,createDate,`limit`,COUNT(userId) AS `current`,ST_DISTANCE_SPHERE(POINT(?2, ?1), location) AS distance\n" +
+            "FROM testdb.study as s\n" +
+            "JOIN testdb.`join` as j\n" +
+            "ON s.id = j.studyId\n" +
+            "GROUP BY studyId\n" +
+            "HAVING `current` >= 1\n" +
+            "ORDER BY distance) AS a WHERE a.distance<10000;", nativeQuery = true)
+    List<StudyListResDto> 전체거리순정렬(double latitude, double longitude);
 
-    @Query(value = "SELECT * FROM study WHERE interest=?1 ORDER BY createdate desc", nativeQuery = true)
-    List<Study> 필터링최신순정렬(String interest);
+    @Query(value = "SELECT * FROM (SELECT id,title,interest,createDate,`limit`,COUNT(userId) AS `current`,ST_DISTANCE_SPHERE(POINT(?2, ?1), location) AS distance\n" +
+            "FROM testdb.study as s\n" +
+            "JOIN testdb.`join` as j\n" +
+            "ON s.id = j.studyId\n" +
+            "GROUP BY studyId\n" +
+            "HAVING `current` >= 1\n" +
+            "ORDER BY createDate desc) AS a WHERE a.distance<10000 AND interest='?3';", nativeQuery = true)
+    List<StudyListResDto> 필터링최신순정렬(double latitude, double longitude, String interest);
 
-    @Query(value = "SELECT * FROM study WHERE interest=?1 ORDER BY mood desc", nativeQuery = true)
-    List<Study> 필터링추천순정렬(String interest);
+    @Query(value = "SELECT * FROM (SELECT id,title,interest,createDate,`limit`,COUNT(userId) AS `current`,ST_DISTANCE_SPHERE(POINT(?2, ?1), location) AS distance\n" +
+            "FROM testdb.study as s\n" +
+            "JOIN testdb.`join` as j\n" +
+            "ON s.id = j.studyId\n" +
+            "GROUP BY studyId\n" +
+            "HAVING `current` >= 1\n" +
+            "ORDER BY mood desc) AS a WHERE a.distance<10000 AND interest='?3';", nativeQuery = true)
+    List<StudyListResDto> 필터링추천순정렬(double latitude, double longitude, String interest);
 
-    @Query(value = "SELECT * FROM study WHERE interest=?1", nativeQuery = true)
-    List<Study> 필터링거리순정렬(String interest);
+    @Query(value = "SELECT * FROM (SELECT id,title,interest,createDate,`limit`,COUNT(userId) AS `current`,ST_DISTANCE_SPHERE(POINT(?2, ?1), location) AS distance\n" +
+            "FROM testdb.study as s\n" +
+            "JOIN testdb.`join` as j\n" +
+            "ON s.id = j.studyId\n" +
+            "GROUP BY studyId\n" +
+            "HAVING `current` >= 1\n" +
+            "ORDER BY distance) AS a WHERE a.distance<10000 AND interest='?3';", nativeQuery = true)
+    List<StudyListResDto> 필터링거리순정렬(double latitude, double longitude, String interest);
 
     @Query(value = "INSERT INTO study(title,interest,createdate,`limit`,count,latitude,longitude,location,`description`)" +
                    " VALUES(:title,:interest,CURDATE(),:limit,:count,:latitude,:longitude," +
@@ -44,5 +75,5 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
                         @Param("description") String description);
 
 
-    List<Study> 스터디정보조회(long studyId);
+  //  List<Study> 스터디정보조회(long studyId);
 }

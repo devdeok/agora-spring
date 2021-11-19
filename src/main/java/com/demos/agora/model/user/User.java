@@ -1,6 +1,6 @@
 package com.demos.agora.model.user;
 
-import com.demos.agora.model.join.Join;
+//import com.demos.agora.model.join.Join;
 import com.demos.agora.model.study.Study;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -37,8 +37,8 @@ public class User {
     private Timestamp createDate;
 
     // join table에 있는 user에 mapping
-    @OneToMany(mappedBy = "user")
-    Set<Join> join;
+   // @OneToMany(mappedBy = "user")
+   // Set<Join> join;
 
     @Builder
     public User(String association, String age, String sex, String interest) {
