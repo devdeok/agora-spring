@@ -24,7 +24,6 @@ public class StudyController {
         return new CMRespDto<>(1,  studyService.스터디생성(studyCreateReqDto));
     }
 
-
     @GetMapping("/study/detail/{studyId}")
     public CMRespDto<?> 스터디정보조회(@PathVariable("studyId") Long studyId) {
         // 사용자가 스터디에 가입되었는지 체크한 뒤 client에서 체크해줌

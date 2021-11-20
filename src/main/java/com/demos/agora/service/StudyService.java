@@ -6,7 +6,7 @@ import com.demos.agora.web.dto.study.StudyCreateReqDto;
 
 import com.demos.agora.web.dto.study.StudyDetailRespDto;
 
-import com.demos.agora.web.dto.study.StudyListResDto;
+import com.demos.agora.web.dto.study.StudyListRespDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class StudyService {
 
     // 정렬 시 study와 user가 매핑된 table도 join해서 데이터를 response해주어야 함
     @Transactional(readOnly = true)
-    public List<StudyListResDto> 스터디목록(double latitude, double longitude, String interest, String lineup) {
+    public List<StudyListRespDto> 스터디목록(double latitude, double longitude, String interest, String lineup) {
 
         if (interest.equals("전체")) {
             if (lineup.equals("최신순"))
@@ -48,7 +48,7 @@ public class StudyService {
         // 스터디 생성 후에는 생성된 studyId, userId가 필요하며 userId에는 그룹장 권한을 주어야 한다.
         String title = studyCreateReqDto.getTitle();
         String interest = studyCreateReqDto.getInterest();
-        int limit = studyCreateReqDto.getLimit();
+        String limit = studyCreateReqDto.getLimit();
         int count = studyCreateReqDto.getCount();
 
         double longitude = studyCreateReqDto.getLongitude();
@@ -58,8 +58,6 @@ public class StudyService {
 
         return studyRepository.스터디생성(title, interest, limit, count,
                 longitude, latitude, description);
-
-
     }
 
 
