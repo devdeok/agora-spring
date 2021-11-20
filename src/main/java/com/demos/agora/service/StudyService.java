@@ -3,6 +3,7 @@ package com.demos.agora.service;
 import static org.junit.Assert.assertNotNull;
 
 import com.demos.agora.model.location.GeometryUtil;
+
 import com.demos.agora.model.study.Study;
 import com.demos.agora.model.study.StudyRepository;
 import com.demos.agora.web.dto.study.StudyCreateReqDto;
@@ -83,6 +84,11 @@ public class StudyService {
     @Transactional(readOnly = true)
     public List<StudyDetailRespDto> 스터디정보조회(Long studyId){
         return studyRepository.스터디정보조회(studyId);
+    }
+
+    @Transactional(readOnly = false)
+    public int 스터디가입(Long studyId, Long userId){
+        return studyRepository.스터디가입(studyId, userId);
     }
 
 }

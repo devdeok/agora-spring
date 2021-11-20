@@ -34,4 +34,8 @@ public class StudyController {
         return new CMRespDto<>(1,  studyService.스터디정보조회(studyId));
     }
 
+    @PostMapping("/study/registry/{studyId}")
+    public CMRespDto<?> 스터디가입(Long studyId, Long userId){
+        return new CMRespDto<>(1, studyService.스터디가입(studyId, userId));
+    }
 }
