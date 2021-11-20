@@ -1,5 +1,8 @@
 package com.demos.agora.service;
 
+import static org.junit.Assert.assertNotNull;
+
+import com.demos.agora.model.location.GeometryUtil;
 import com.demos.agora.model.study.Study;
 import com.demos.agora.model.study.StudyRepository;
 import com.demos.agora.web.dto.study.StudyCreateReqDto;
@@ -8,7 +11,10 @@ import com.demos.agora.web.dto.study.StudyDetailRespDto;
 
 import com.demos.agora.web.dto.study.StudyListRespDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.repository.Modifying;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.geom.Point;
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,22 +48,35 @@ public class StudyService {
     }
 
     // 생성 시 study_user테이블에 study와 user의 id를 매핑시켜 주어야 하며 생성한 user에게 그룹장 권한을 부여해야 한다.
-    @Modifying
-    @Transactional(readOnly = true)
-    public List<Study> 스터디생성(StudyCreateReqDto studyCreateReqDto) {
+    @Transactional
+    public int 스터디생성(StudyCreateReqDto studyCreateReqDto) {
         // 스터디 생성 후에는 생성된 studyId, userId가 필요하며 userId에는 그룹장 권한을 주어야 한다.
         String title = studyCreateReqDto.getTitle();
         String interest = studyCreateReqDto.getInterest();
-        String limit = studyCreateReqDto.getLimit();
+        int limit = studyCreateReqDto.getLimit();//여기에 값이 안들어옴 숫자로만 받을 수 있게 해야할 듯?
         int count = studyCreateReqDto.getCount();
 
         double longitude = studyCreateReqDto.getLongitude();
         double latitude = studyCreateReqDto.getLatitude();
 
+        //
+        String locationWKT = "POINT("+new Double(longitude).toString()+" "+new Double(latitude).toString()+")";
+        Geometry GeoPoint = GeometryUtil.wktToGeometry(locationWKT);
+
+        assertNotNull(GeoPoint);
+
+        Study studyLocation = new Study();
+        studyLocation.setLocation((Point)GeoPoint);
+
+        String location = studyLocation.getLocation().toString();
+
+        longitude = Math.round(longitude*1000000)/1000000.0; // 소수점 6자리까지 맞춤
+        latitude = Math.round(latitude*1000000)/1000000.0;
+
         String description = studyCreateReqDto.getDescription();
 
         return studyRepository.스터디생성(title, interest, limit, count,
-                longitude, latitude, description);
+                longitude, latitude, location, description); // error
     }
 
 
