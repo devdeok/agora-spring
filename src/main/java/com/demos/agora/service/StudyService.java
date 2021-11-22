@@ -82,7 +82,7 @@ public class StudyService {
 
 
     @Transactional(readOnly = true)
-    public List<StudyDetailRespDto> 스터디정보조회(Long studyId){
+    public List<StudyDetailRespDto> 스터디정보조회(int studyId){
         return studyRepository.스터디정보조회(studyId);
     }
 

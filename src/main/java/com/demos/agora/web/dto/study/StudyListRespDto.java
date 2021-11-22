@@ -3,7 +3,7 @@ package com.demos.agora.web.dto.study;
 import java.sql.Date;
 
 public interface StudyListRespDto {
-    long getId();           // 스터디 id
+    int getId();           // 스터디 id
     String getTitle();      // 스터디 제목
     String getInterest();   // 관심분야
     Date getCreateDate();   // 만든시간

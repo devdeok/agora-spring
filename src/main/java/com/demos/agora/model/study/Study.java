@@ -1,7 +1,6 @@
 package com.demos.agora.model.study;
 
 import com.demos.agora.model.join.Join;
-import com.demos.agora.model.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.locationtech.jts.geom.Point;

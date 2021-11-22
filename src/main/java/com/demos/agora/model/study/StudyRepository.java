@@ -78,11 +78,11 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
                         @Param("location") String location,
                         @Param("description") String description);
 
-    @Query(value = "SELECT studyId ,nickName, `role`, manner, association " +
+    @Query(value = "SELECT userId ,nickName, `role`, manner, association " +
                    "FROM `join` " +
                    "JOIN user " +
                    "WHERE join.userId=user.id AND join.studyId=?1",nativeQuery = true)
-    List<StudyDetailRespDto> 스터디정보조회(Long studyId);
+    List<StudyDetailRespDto> 스터디정보조회(int studyId);
 
 
     @Modifying
