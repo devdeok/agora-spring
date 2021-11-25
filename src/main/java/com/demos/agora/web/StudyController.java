@@ -24,8 +24,8 @@ public class StudyController {
         return new CMRespDto<>(1,  studyService.스터디생성(studyCreateReqDto));
     }
 
-    @GetMapping("/study/detail/{studyId}")
-    public CMRespDto<?> 스터디정보조회(@PathVariable("studyId") int studyId) {
+    @GetMapping("/study/detail")
+    public CMRespDto<?> 스터디정보조회(int studyId) {
         // 사용자가 스터디에 가입되었는지 체크한 뒤 client에서 체크해줌
         // 가입되지 않은 사용자일 경우 이 controller로 오게 됨
         // study는 interest, title, limit, description, count을 intent를 통해 들고 있기

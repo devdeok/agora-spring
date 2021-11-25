@@ -1,6 +1,8 @@
 package com.demos.agora.model.user;
 
 import com.demos.agora.model.join.Join;
+import com.demos.agora.model.manner.Manner;
+import com.demos.agora.model.mood.Mood;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -40,6 +42,18 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     Set<Join> join;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "moodEvaluator")
+    Set<Mood> mood;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "mannerEvaluator")
+    Set<Manner> mannerEvaluator;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "mannerEvaluatee")
+    Set<Manner> mannerEvaluatee;
 
 }
 

@@ -1,6 +1,8 @@
 package com.demos.agora.model.study;
 
 import com.demos.agora.model.join.Join;
+import com.demos.agora.model.manner.Manner;
+import com.demos.agora.model.mood.Mood;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.locationtech.jts.geom.Point;
@@ -34,5 +36,13 @@ public class Study {
     @JsonIgnore
     @OneToMany(mappedBy = "study")
     Set<Join> join;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "moodStudy")
+    Set<Mood> mood_s;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "mannerStudy")
+    Set<Manner> manner_s;
 
 }

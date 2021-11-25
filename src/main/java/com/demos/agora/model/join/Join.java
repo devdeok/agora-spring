@@ -2,7 +2,6 @@ package com.demos.agora.model.join;
 
 import com.demos.agora.model.study.Study;
 import com.demos.agora.model.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
