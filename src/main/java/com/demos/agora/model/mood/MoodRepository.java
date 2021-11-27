@@ -34,4 +34,16 @@ public interface MoodRepository extends JpaRepository<Mood,Long> {
             "      HAVING evaluation=1)as d;", nativeQuery = true)
     List<EvalRespDto> 평가해야할분위기(int userId);
 
+
+
+    @Modifying
+    @Transactional//이거 있어야 쿼리가 정상적으로 실행되요!
+    @Query(value = "UPDATE study SET mood=((mood*moodCount)+?2)/(moodCount+1), moodCount=moodCount+1 WHERE id=?1",nativeQuery = true)
+    int 분위기업데이트(int studyId, Double moodAvgScore);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE mood SET evaluateDate=curdate(), evaluation=0 WHERE userId=?2 AND studyId=?1",nativeQuery = true)
+    int 분위기평가완료(int studyId, int userId);
+
 }
