@@ -14,7 +14,7 @@ public class EvaluateScheduler {
     private MannerRepository mannerRepository;
 
     // cron = 초 분 시 일 월 요일
-    @Scheduled(cron = "0 0 0 * * ?") // 10초마다
+    @Scheduled(cron = "0 0 0 * * ?") // 매일 0시 마다
     public void printDate(){
         // evaluation 및 evaluateDate 업데이트
         moodRepository.분위기평가여부설정();

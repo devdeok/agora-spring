@@ -2,7 +2,9 @@ package com.demos.agora.service;
 
 import com.demos.agora.model.manner.MannerRepository;
 import com.demos.agora.model.mood.MoodRepository;
+import com.demos.agora.web.dto.evaluate.EvalReqDto;
 import com.demos.agora.web.dto.evaluate.EvalRespDto;
+import com.demos.agora.web.dto.evaluate.MoodReqDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +18,65 @@ public class EvaluateService {
     private final MoodRepository moodRepository;
     private final MannerRepository mannerRepository;
 
+/*
+    @Transactional(readOnly = true)
+    public List<EvalRespDto> 평가해야할목록(EvalReqDto evalReqDto){
+
+        int userId=evalReqDto.getUserId();
+
+        List<EvalRespDto> mood=new ArrayList<>( moodRepository.평가해야할분위기(userId));
+        List<EvalRespDto> manner=new ArrayList<>(mannerRepository.평가해야할매너(userId));
+        List<EvalRespDto> list=new ArrayList<>();
+
+        list.addAll(mood);
+        list.addAll(manner);
+
+        return list;
+    }
+   */
+
+    @Transactional(readOnly = true)
+    public List<EvalRespDto> 평가해야할목록(int userId){
+
+        List<EvalRespDto> mood=new ArrayList<>( moodRepository.평가해야할분위기(userId));
+        List<EvalRespDto> manner=new ArrayList<>(mannerRepository.평가해야할매너(userId));
+        List<EvalRespDto> list=new ArrayList<>();
+
+        list.addAll(mood);
+        list.addAll(manner);
+
+        return list;
+    }
+
+   /* @Transactional(readOnly = false)
+    public List<Integer> 분위기업데이트(MoodReqDto moodReqDto){
+       int studyId = moodReqDto.getStudyId();
+       int userId = moodReqDto.getUserId();
+       Double moodAvgScore = moodReqDto.getMoodAvgScore();
+
+       List<Integer> update = new ArrayList<>();
+
+       update.add(moodRepository.분위기업데이트(studyId, moodAvgScore));
+       update.add(moodRepository.분위기평가완료(studyId, userId));
+
+       return update;
+    }*/
 
 
-   /* @Transactional(readOnly = true)
+   @Transactional(readOnly = false)
+   public List<Integer> 분위기업데이트(int studyId, int userId, double moodAvgScore){
+
+       List<Integer> update = new ArrayList<>();
+
+       update.add(moodRepository.분위기업데이트(studyId, moodAvgScore));
+       update.add(moodRepository.분위기평가완료(studyId, userId));
+
+       return update;
+
+   }
+
+
+    /* @Transactional(readOnly = true)
     public List<EvalRespDto> 평가해야할분위기(int userId){
         return moodRepository.평가해야할분위기(userId);
     }
@@ -28,22 +86,6 @@ public class EvaluateService {
         return mannerRepository.평가해야할매너(userId);
     }*/
 
-
-    @Transactional(readOnly = true)
-    public List<EvalRespDto> 평가해야할목록(int userId){
-
-        List<EvalRespDto> mood=new ArrayList<>( moodRepository.평가해야할분위기(userId));
-        List<EvalRespDto> manner=new ArrayList<>(mannerRepository.평가해야할매너(userId));
-        List<EvalRespDto> list=new ArrayList<>();
-
-       /* mood= moodRepository.평가해야할분위기(userId);
-        manner=mannerRepository.평가해야할매너(userId);*/
-
-        list.addAll(mood);
-        list.addAll(manner);
-
-        return list;
-    }
 
 
     /*
