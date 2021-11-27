@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface MoodRepository extends JpaRepository<Mood,Long> {
 
     // 평가한지 2주이상 된 사용자의 evaluation 상태를 1로 바꾸고 evaluateDate를 현재날짜로 update
-    // 하루에 한번씩 스케쥴링을 통해 업데이트됨
+        // 하루에 한번씩 스케쥴링을 통해 업데이트됨
     @Modifying
     @Transactional
     @Query(value = "UPDATE mood_evaluation " +

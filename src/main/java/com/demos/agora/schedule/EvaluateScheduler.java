@@ -13,7 +13,7 @@ public class EvaluateScheduler {
 
     // cron = 초 분 시 일 월 요일
     @Scheduled(cron = "0 0 0 * * *") // 10초마다
-    public void printDate(){
+    public void evaluateScheduling(){
         // evaluation 및 evaluateDate 업데이트
         moodRepository.분위기평가날짜();
         System.out.println("성공?");
