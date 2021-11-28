@@ -41,4 +41,9 @@ public class StudyController {
     public CMRespDto<?> 스터디가입(Long studyId, Long userId){
         return new CMRespDto<>(1, studyService.스터디가입(studyId, userId));
     }
+
+    @GetMapping("/study/test")
+    public CMRespDto<?> 테스트(){
+        return new CMRespDto<>(1, studyService.테스트());
+    }
 }

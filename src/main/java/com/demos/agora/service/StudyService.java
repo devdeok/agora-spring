@@ -2,6 +2,7 @@ package com.demos.agora.service;
 
 import static org.junit.Assert.assertNotNull;
 
+import com.demos.agora.model.join.JoinRepository;
 import com.demos.agora.model.location.GeometryUtil;
 
 import com.demos.agora.model.study.Study;
@@ -11,6 +12,7 @@ import com.demos.agora.web.dto.study.StudyCreateReqDto;
 import com.demos.agora.web.dto.study.StudyDetailRespDto;
 
 import com.demos.agora.web.dto.study.StudyListRespDto;
+import com.demos.agora.web.dto.study.TestDto;
 import lombok.RequiredArgsConstructor;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.Point;
@@ -25,6 +27,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudyService {
     private final StudyRepository studyRepository;
+    private final JoinRepository joinRepository;
 
     // 정렬 시 study와 user가 매핑된 table도 join해서 데이터를 response해주어야 함
     @Transactional(readOnly = true)
@@ -89,6 +92,11 @@ public class StudyService {
     @Transactional(readOnly = false)
     public int 스터디가입(Long studyId, Long userId){
         return studyRepository.스터디가입(studyId, userId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<TestDto> 테스트(){
+        return studyRepository.테스트();
     }
 
 }

@@ -2,6 +2,7 @@ package com.demos.agora.model.study;
 
 import com.demos.agora.web.dto.study.StudyDetailRespDto;
 import com.demos.agora.web.dto.study.StudyListRespDto;
+import com.demos.agora.web.dto.study.TestDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -86,6 +87,11 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
 
 
     @Modifying
-    @Query(value = "INSERT INTO testdb.join(studyId, userId, `role`, memberSince) VALUES(:studyId,:userId,0,CURDATE())",nativeQuery = true)
+    @Query(value = "INSERT INTO join(studyId, userId, `role`) VALUES(:studyId,:userId,0)",nativeQuery = true)
     int 스터디가입(@Param("studyId") Long studyId, @Param("userId") Long userId);
+
+
+    @Query(value="SELECT * FROM `join` WHERE userId=3", nativeQuery = true)
+    List<TestDto> 테스트();
+
 }
