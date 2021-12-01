@@ -37,13 +37,13 @@ public class StudyController {
         return new CMRespDto<>(1,  studyService.스터디정보조회(id));
     }
 
-    @PostMapping("/study/registry/{studyId}")
+    @PostMapping("/study/join")
     public CMRespDto<?> 스터디가입(Long studyId, Long userId){
         return new CMRespDto<>(1, studyService.스터디가입(studyId, userId));
     }
 
-    @GetMapping("/study/test")
-    public CMRespDto<?> 테스트(){
-        return new CMRespDto<>(1, studyService.테스트());
+    @GetMapping("/mystudy")
+    public CMRespDto<?> 내스터디조회(double latitude, double longitude,Long userId){
+        return new CMRespDto<>(1, studyService.내스터디조회(latitude, longitude, userId));
     }
 }

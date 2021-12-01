@@ -89,14 +89,14 @@ public class StudyService {
         return studyRepository.스터디정보조회(studyId);
     }
 
-    @Transactional(readOnly = false)
+    @Transactional
     public int 스터디가입(Long studyId, Long userId){
         return studyRepository.스터디가입(studyId, userId);
     }
 
     @Transactional(readOnly = true)
-    public List<TestDto> 테스트(){
-        return studyRepository.테스트();
+    public List<StudyListRespDto> 내스터디조회(double latitude, double longitude, Long userId){
+        return studyRepository.내스터디조회(latitude, longitude, userId);
     }
 
 }

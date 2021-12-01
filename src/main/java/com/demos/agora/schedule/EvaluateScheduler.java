@@ -20,6 +20,5 @@ public class EvaluateScheduler {
         // evaluation 및 evaluateDate 업데이트
         moodRepository.분위기평가여부설정();
         mannerRepository.매너평가여부설정();
-//        System.out.println("성공?"); //확인용
     }
 }

@@ -1,15 +1,10 @@
 package com.demos.agora.web;
 
 import com.demos.agora.service.EvaluateService;
-import com.demos.agora.service.StudyService;
 import com.demos.agora.web.dto.CMRespDto;
-import com.demos.agora.web.dto.evaluate.EvalReqDto;
-import com.demos.agora.web.dto.evaluate.MoodReqDto;
-import com.demos.agora.web.dto.study.StudyCreateReqDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor

@@ -91,7 +91,14 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
     int 스터디가입(@Param("studyId") Long studyId, @Param("userId") Long userId);
 
 
-    @Query(value="SELECT * FROM `join` WHERE userId=3", nativeQuery = true)
-    List<TestDto> 테스트();
+    @Query(value="SELECT id, title, interest, createDate, `limit`, `current`, distance\n" +
+            "FROM (SELECT id,title,interest,createDate,`limit`,COUNT(userId) AS `current`,ST_DISTANCE_SPHERE(POINT(?2, ?1), location) AS distance, j.memberSince\n" +
+            "FROM study as s\n" +
+            "JOIN `join` as j\n" +
+            "ON s.id = j.studyId\n" +
+            "WHERE j.userId=?3\n" +
+            "GROUP BY studyId\n" +
+            "ORDER BY memberSince desc) AS a", nativeQuery = true)
+    List<StudyListRespDto> 내스터디조회(double latitude, double longitude, Long userId);
 
 }
