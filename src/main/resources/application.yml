@@ -12,7 +12,7 @@ spring:
     # url: jdbc:mysql://localhost:3306/testdb?serverTimezone=Asia/Seoul
     url: jdbc:mysql://localhost:3306/testdb?serverTimezone=Asia/Seoul
     username: root
-    password: pearl23327!
+    password: 
 
   jpa:
     open-in-view: true
